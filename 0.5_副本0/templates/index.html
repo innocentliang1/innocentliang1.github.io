@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Name & Signature Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8C3131',
+                        secondary: '#D9A566',
+                        accent: '#F2E8C6',
+                        dark: '#262626',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .bg-paper {
+                background-color: #F9F6F0;
+                background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d9a566' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+            .ancient-card {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                border: 1px solid #E8D4B6;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            .ancient-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #8C3131, #D9A566, #8C3131);
+            }
+            .ancient-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(140, 49, 49, 0.15);
+            }
+            .audio-button {
+                transition: all 0.2s ease;
+            }
+            .audio-button:hover {
+                color: #8C3131;
+                transform: scale(1.1);
+            }
+            .audio-button:active {
+                transform: scale(0.95);
+            }
+            }
+        
+    </style>
+</head>
+<body class="bg-paper min-h-screen font-sans text-dark">
+    <header class="bg-primary text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-[clamp(1.8rem,4vw,2.8rem)] font-bold text-center">
+                <i class="fa fa-pencil-square-o mr-3"></i>Chinese Name & Signature Generator
+            </h1>
+            <p class="text-center mt-2 text-accent opacity-90">Discover your personalized Chinese name and artistic signature</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Name Input Section -->
+        <section id="name-input-section" class="bg-white rounded-xl shadow-md p-6 mb-8 transform transition-all duration-300 hover:shadow-lg">
+            <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                <i class="fa fa-user-circle mr-2"></i>Your Name
+            </h2>
+            <form id="name-form" class="space-y-4">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input
+                        type="text"
+                        id="foreign_name"
+                        name="foreign_name"
+                        placeholder="Enter your name"
+                        required
+                        class="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition duration-200"
+                    >
+                    <button
+                        type="submit"
+                        class="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition duration-200 transform hover:scale-105 flex items-center justify-center"
+                    >
+                        <i class="fa fa-magic mr-2"></i>Generate Chinese Name
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Results Section - Initially Hidden -->
+        <section id="results-section" class="hidden space-y-8">
+            <!-- Chinese Name Results -->
+            <div class="bg-white rounded-xl shadow-md p-6 transform transition-all duration-300 hover:shadow-lg">
+                <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <i class="fa fa-id-card mr-2"></i>Your Chinese Name Options
+                </h2>
+                <div id="result-section" class="mt-8 bg-white p-6 rounded-lg shadow-md transform transition-all duration-500 opacity-0 translate-y-4">
+    <div id="name-cards-container"></div>
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">Your Chinese Name</h2>
+                        <div class="flex items-center mb-4">
+                            <span id="chinese-name" class="text-4xl font-bold text-red-800"></span>
+                            <span id="pinyin" class="ml-4 text-xl text-gray-600 italic"></span>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Meaning & Cultural Significance:</h3>
+                            <p id="explanation" class="text-gray-700 leading-relaxed"></p>
+                        </div>
+                        
+                        <!-- Share Button -->
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <button
+                                id="share-btn"
+                                class="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition duration-200 transform hover:scale-105 flex items-center justify-center"
+                            >
+                                <i class="fa fa-share-alt mr-2"></i>Share This Name
+                            </button>
+                            <div id="share-success" class="hidden mt-3 text-green-600">
+                                <i class="fa fa-check-circle mr-2"></i>Link copied to clipboard!
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <!-- Signature Generation -->
+            <div class="bg-white rounded-xl shadow-md p-6 transform transition-all duration-300 hover:shadow-lg">
+                <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                    <i class="fa fa-pencil mr-2"></i>Your Personalized Signature
+                </h2>
+                <div class="text-center">
+                    <p class="mb-4 text-gray-600">Generate a beautiful Chinese calligraphy signature for your new name</p>
+                    <button
+                        id="generate-signature-btn"
+                        class="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-lg transition duration-200 transform hover:scale-105 mb-6"
+                    >
+                        <i class="fa fa-paint-brush mr-2"></i>Create My Signature
+                    </button>
+
+                    <div id="signature-container" class="hidden">
+                        <div class="inline-block bg-white p-6 shadow-inner border border-gray-200 rounded-lg mb-4">
+                            <img id="signature-image" src="" alt="Your Chinese signature" class="max-w-full h-auto">
+                        </div>
+                        <div class="mt-4">
+                            <a
+                                id="download-signature"
+                                href=""
+                                download
+                                class="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition duration-200"
+                            >
+                                <i class="fa fa-download mr-2"></i>Download Signature
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="loading-signature" class="hidden">
+                        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary mb-2"></div>
+                        <p class="text-gray-600">Creating your unique signature...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>Chinese Name & Signature Generator | Discover the beauty of Chinese culture</p>
+            <p class="text-sm mt-2 opacity-70">© 2025 All rights reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameForm = document.getElementById('name-form');
+            const resultsSection = document.getElementById('results-section');
+            const chineseNameElement = document.getElementById('chinese-name');
+            const pinyinElement = document.getElementById('pinyin');
+            const explanationElement = document.getElementById('explanation');
+            const generateSignatureBtn = document.getElementById('generate-signature-btn');
+            const signatureContainer = document.getElementById('signature-container');
+            const signatureImage = document.getElementById('signature-image');
+            const downloadSignature = document.getElementById('download-signature');
+            const loadingSignature = document.getElementById('loading-signature');
+            let chineseName = '';
+
+            // Handle name generation form submission
+            // Function to update UI with name data
+            function updateUIWithNameData(data) {
+                chineseName = data.chinese_name;
+                
+                // Show results section and animate in
+                resultsSection.classList.remove('hidden');
+                const resultSection = document.getElementById('result-section');
+                resultSection.classList.remove('opacity-0', 'translate-y-4');
+                resultSection.classList.add('opacity-100', 'translate-y-0');
+
+                // Select elements within result section
+                const chineseNameElement = resultSection.querySelector('#chinese-name');
+                const pinyinElement = resultSection.querySelector('#pinyin');
+                const explanationElement = resultSection.querySelector('#explanation');
+
+                // Update UI with results
+                chineseNameElement.textContent = data.chinese_name;
+                pinyinElement.textContent = data.pinyin;
+                explanationElement.innerHTML = data.explanation.replace(/\n/g, '<br>');
+                
+                // Update URL state
+                const state = {
+                    foreign_name: data.foreign_name,
+                    chinese_name: data.chinese_name,
+                    pinyin: data.pinyin,
+                    explanation: data.explanation
+                };
+                history.pushState(state, '', window.location.pathname);
+            }
+
+            // Handle form submission
+            nameForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const foreignName = document.getElementById('foreign_name').value;
+
+                try {
+                    // Show loading state
+                    nameForm.querySelector('button').disabled = true;
+                    nameForm.querySelector('button').innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>Generating...';
+
+                    // Send request to generate Chinese name
+                    const response = await fetch('/generate-name', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            'foreign_name': foreignName
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to generate Chinese name');
+                    }
+
+                    const data = await response.json();
+                    updateUIWithNameData(data);
+
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                } finally {
+                    // Reset button state
+                    nameForm.querySelector('button').disabled = false;
+                    nameForm.querySelector('button').innerHTML = '<i class="fa fa-magic mr-2"></i>Generate Chinese Name';
+                }
+            });
+
+            // Handle share button click
+            document.getElementById('share-btn').addEventListener('click', async () => {
+                const shareBtn = document.getElementById('share-btn');
+                const shareSuccess = document.getElementById('share-success');
+                
+                try {
+                    shareBtn.disabled = true;
+                    shareBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>Copying Link...';
+                    shareSuccess.classList.add('hidden');
+
+                    // Get current name data
+                    const nameData = {
+                        foreign_name: document.getElementById('foreign_name').value,
+                        chinese_name: chineseNameElement.textContent,
+                        pinyin: pinyinElement.textContent,
+                        explanation: explanationElement.textContent
+                    };
+
+                    // Update URL with state data
+                    const stateUrl = new URL(window.location.href);
+                    stateUrl.searchParams.set('foreign_name', nameData.foreign_name);
+                    stateUrl.searchParams.set('chinese_name', nameData.chinese_name);
+                    stateUrl.searchParams.set('pinyin', nameData.pinyin);
+                    stateUrl.searchParams.set('explanation', nameData.explanation);
+                    
+                    // Copy current URL to clipboard
+                    try {
+                        if (navigator.clipboard) {
+                            await navigator.clipboard.writeText(stateUrl.toString());
+                        } else {
+                            // Fallback for browsers without Clipboard API
+                            const textarea = document.createElement('textarea');
+                            textarea.value = stateUrl.toString();
+                            textarea.style.position = 'fixed';
+                            document.body.appendChild(textarea);
+                            textarea.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(textarea);
+                        }
+                        
+                        // Show success message
+                        shareSuccess.classList.remove('hidden');
+                        shareSuccess.innerHTML = '<i class="fa fa-check-circle mr-2"></i>Link copied to clipboard!';
+                    } catch (copyError) {
+                        // If copy fails, show the URL for manual copy
+                        shareSuccess.innerHTML = `<i class="fa fa-link mr-2"></i>Share URL: ${stateUrl.toString()}`;
+                        shareSuccess.classList.remove('hidden');
+                        shareSuccess.classList.add('text-blue-600');
+                        throw new Error('Please manually copy this URL');
+                    }
+                    
+                } catch (error) {
+                    if (error.message !== 'Please manually copy this URL') {
+                        alert('Error sharing name: ' + error.message);
+                    }
+                } finally {
+                    shareBtn.disabled = false;
+                    shareBtn.innerHTML = '<i class="fa fa-share-alt mr-2"></i>Share This Name';
+                }
+            });
+
+            // Check for URL parameters on page load
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('chinese_name')) {
+                const nameData = {
+                    foreign_name: urlParams.get('foreign_name') || '',
+                    chinese_name: urlParams.get('chinese_name') || '',
+                    pinyin: urlParams.get('pinyin') || '',
+                    explanation: urlParams.get('explanation') || ''
+                };
+                updateUIWithNameData(nameData);
+            }
+
+            // Handle signature generation
+            generateSignatureBtn.addEventListener('click', async () => {
+                if (!chineseName) return;
+
+                try {
+                    // Show loading state
+                    generateSignatureBtn.disabled = true;
+                    signatureContainer.classList.add('hidden');
+                    loadingSignature.classList.remove('hidden');
+
+                    // Send request to generate signature
+                    const response = await fetch('/generate-signature', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            'chinese_name': chineseName
+                        })
+                    });
+
+                    if (!response.ok) {
+                        // Try to get error details from response
+                        let errorMsg = 'Failed to generate signature';
+                        try {
+                            const errorData = await response.json();
+                            if (errorData.detail) {
+                                errorMsg = errorData.detail;
+                            }
+                        } catch (e) {
+                            console.error('Error parsing error response:', e);
+                        }
+                        throw new Error(errorMsg);
+                    }
+
+                    const data = await response.json();
+
+                    // Update signature image and download link
+                    signatureImage.src = data.signature_url + '?t=' + new Date().getTime(); // Cache busting
+                    downloadSignature.href = `/download-signature/${data.signature_id}`;
+
+                    // Show signature container
+                    loadingSignature.classList.add('hidden');
+                    signatureContainer.classList.remove('hidden');
+
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                    loadingSignature.classList.add('hidden');
+                } finally {
+                    generateSignatureBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+
+    <!-- Feedback and Donation Buttons -->
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col space-y-3">
+      <button id="feedbackBtn" class="p-2 bg-secondary text-white rounded-full shadow-lg hover:bg-secondary/90 transition-colors transform hover:scale-110">
+        <i class="fa fa-comment"></i>
+      </button>
+      <button id="donateBtn" class="p-2 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-colors transform hover:scale-110">
+        <i class="fa fa-gift"></i>
+      </button>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg max-w-sm ancient-card">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-primary">Send Feedback</h3>
+          <button id="closeFeedbackModal" class="text-gray-500 hover:text-gray-700">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        <form id="feedbackForm" class="space-y-4">
+          <div>
+            <label for="feedbackMessage" class="block text-sm font-medium text-gray-700 mb-1">Your Feedback</label>
+            <textarea 
+              id="feedbackMessage" 
+              rows="4" 
+              required
+              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+              placeholder="Share your thoughts or report issues..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+            <i class="fa fa-paper-plane mr-2"></i>Send Feedback
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg max-w-sm ancient-card">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-primary">Support Our Work</h3>
+          <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        <p class="mb-4 text-gray-600">Scan the QR code to donate via Alipay</p>
+        <img src="/static/alipay.jpg" alt="Alipay QR Code" class="w-full h-auto mb-4 rounded border border-gray-200">
+        <p class="text-sm text-gray-500 text-center">Thank you for your support!</p>
+      </div>
+    </div>
+
+    <script>
+      const donateBtn = document.getElementById('donateBtn');
+      const donateModal = document.getElementById('donateModal');
+      const closeModal = document.getElementById('closeModal');
+
+      donateBtn.addEventListener('click', async () => {
+        // Track donation button click
+        try {
+          await fetch('/track_donation_click', {
+            method: 'POST'
+          });
+        } catch (error) {
+          console.error('Error tracking donation click:', error);
+        }
+        donateModal.classList.remove('hidden');
+      });
+
+      closeModal.addEventListener('click', () => {
+        donateModal.classList.add('hidden');
+      });
+
+      // Close modal when clicking outside
+      donateModal.addEventListener('click', (e) => {
+        if (e.target === donateModal) {
+          donateModal.classList.add('hidden');
+        }
+      });
+
+      // Feedback button and modal handling
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const feedbackModal = document.getElementById('feedbackModal');
+      const closeFeedbackModal = document.getElementById('closeFeedbackModal');
+      const feedbackForm = document.getElementById('feedbackForm');
+
+      feedbackBtn.addEventListener('click', () => {
+        feedbackModal.classList.remove('hidden');
+      });
+
+      closeFeedbackModal.addEventListener('click', () => {
+        feedbackModal.classList.add('hidden');
+      });
+
+      feedbackModal.addEventListener('click', (e) => {
+        if (e.target === feedbackModal) {
+          feedbackModal.classList.add('hidden');
+        }
+      });
+
+      // Handle feedback form submission
+      feedbackForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const message = document.getElementById('feedbackMessage').value;
+        const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+        
+        try {
+          // Show loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>Sending...';
+
+          // Send feedback to server as form data
+          const formData = new FormData();
+          formData.append('message', message);
+          
+          const response = await fetch('/submit-feedback', {
+            method: 'POST',
+            body: formData
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to send feedback');
+          }
+
+          // Show success message
+          feedbackForm.innerHTML = `
+            <div class="text-center py-4">
+              <i class="fa fa-check-circle text-green-500 text-4xl mb-2"></i>
+              <p class="text-gray-700">Thank you for your feedback!</p>
+              <button 
+                id="closeSuccessBtn"
+                class="mt-4 bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                Close
+              </button>
+            </div>
+          `;
+          
+          // Add event listener to close button
+          document.getElementById('closeSuccessBtn').addEventListener('click', () => {
+            // Reset form and hide modal
+            feedbackForm.innerHTML = `
+              <div>
+                <label for="feedbackMessage" class="block text-sm font-medium text-gray-700 mb-1">Your Feedback</label>
+                <textarea 
+                  id="feedbackMessage" 
+                  rows="4" 
+                  required
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                  placeholder="Share your thoughts or report issues..."></textarea>
+              </div>
+              <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                <i class="fa fa-paper-plane mr-2"></i>Send Feedback
+              </button>
+            `;
+            feedbackModal.classList.add('hidden');
+          });
+
+        } catch (error) {
+          alert('Error: ' + error.message);
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fa fa-paper-plane mr-2"></i>Send Feedback';
+        }
+      });
+    </script>
+</body>
+</html>
