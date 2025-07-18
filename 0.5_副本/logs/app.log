@@ -1,0 +1,57 @@
+2025-06-27 16:54:41 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 16:54:53 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95'}
+2025-06-27 16:55:03 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95', 'signature_id': 'a355303a-97e0-4a5b-a29f-b34dec3167de777694671'}
+2025-06-27 16:55:03 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': 'a355303a-97e0-4a5b-a29f-b34dec3167de777694671', 'file_path': 'static/signatures/a355303a-97e0-4a5b-a29f-b34dec3167de777694671.png'}
+2025-06-27 16:55:05 | INFO | {'event': 'log_export_request', 'ip': '127.0.0.1', 'days': 7}
+2025-06-27 16:55:52 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 16:56:18 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': '李云飞'}
+2025-06-27 16:56:27 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': '李云飞', 'signature_id': '02782f6f-d95d-4656-be02-21fd3e10a6d2173043080'}
+2025-06-27 16:56:27 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': '02782f6f-d95d-4656-be02-21fd3e10a6d2173043080', 'file_path': 'static/signatures/02782f6f-d95d-4656-be02-21fd3e10a6d2173043080.png'}
+2025-06-27 16:58:45 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95'}
+2025-06-27 16:58:56 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95', 'signature_id': '75144fcb-e650-4905-947f-69c3a1f370de1227084425'}
+2025-06-27 16:58:56 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': '75144fcb-e650-4905-947f-69c3a1f370de1227084425', 'file_path': 'static/signatures/75144fcb-e650-4905-947f-69c3a1f370de1227084425.png'}
+2025-06-27 17:00:59 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95ç\xad¾å\x90\x8d'}
+2025-06-27 17:01:09 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95ç\xad¾å\x90\x8d', 'signature_id': 'd1cfe2c3-5548-400b-96d6-ef515785bfeb1751014869'}
+2025-06-27 17:01:09 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': 'd1cfe2c3-5548-400b-96d6-ef515785bfeb1751014869', 'file_path': 'static/signatures/d1cfe2c3-5548-400b-96d6-ef515785bfeb1751014869.png'}
+2025-06-27 17:01:11 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95ç\xad¾å\x90\x8d'}
+2025-06-27 17:01:21 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': 'æµ\x8bè¯\x95ç\xad¾å\x90\x8d', 'signature_id': 'ed287f8b-683b-4131-829a-b1eddb9229271751014880'}
+2025-06-27 17:01:21 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': 'ed287f8b-683b-4131-829a-b1eddb9229271751014880', 'file_path': 'static/signatures/ed287f8b-683b-4131-829a-b1eddb9229271751014880.png'}
+2025-06-27 17:02:25 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 17:02:45 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': '安德'}
+2025-06-27 17:02:55 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': '安德', 'signature_id': '07a331bc-f353-45cf-b19b-6fa085e15efa1751014974'}
+2025-06-27 17:02:55 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': '07a331bc-f353-45cf-b19b-6fa085e15efa1751014974', 'file_path': 'static/signatures/07a331bc-f353-45cf-b19b-6fa085e15efa1751014974.png'}
+2025-06-27 17:03:57 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 17:04:30 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 17:04:44 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': '爱玲'}
+2025-06-27 17:04:53 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': '爱玲', 'signature_id': '5874990d-13b2-4bcc-805d-5ffad62ac5921751015093'}
+2025-06-27 17:04:53 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': '5874990d-13b2-4bcc-805d-5ffad62ac5921751015093', 'file_path': 'static/signatures/5874990d-13b2-4bcc-805d-5ffad62ac5921751015093.png'}
+2025-06-27 17:04:53 | INFO | {'event': 'signature_request_start', 'ip': '127.0.0.1', 'name': '江明'}
+2025-06-27 17:05:03 | INFO | {'event': 'signature_generated', 'ip': '127.0.0.1', 'name': '江明', 'signature_id': 'c8a118f0-15b3-4d75-af9a-26ec2f67e79b1751015102'}
+2025-06-27 17:05:03 | INFO | {'event': 'signature_image_saved', 'ip': '127.0.0.1', 'signature_id': 'c8a118f0-15b3-4d75-af9a-26ec2f67e79b1751015102', 'file_path': 'static/signatures/c8a118f0-15b3-4d75-af9a-26ec2f67e79b1751015102.png'}
+2025-06-27 17:55:12 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 17:57:17 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 17:57:22 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': "name 'MIMEText' is not defined"}
+2025-06-27 17:57:52 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': "name 'MIMEText' is not defined"}
+2025-06-27 17:59:21 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 17:59:27 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': "name 'smtplib' is not defined"}
+2025-06-27 18:00:18 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 18:00:30 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': "(-1, b'\\x00\\x00\\x00')"}
+2025-06-27 18:00:54 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': "(-1, b'\\x00\\x00\\x00')"}
+2025-06-27 18:05:23 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 18:05:27 | INFO | {'event': 'smtp_config', 'ip': '127.0.0.1', 'config': {'server': 'smtp.qq.com', 'port': '465', 'username': '1071746790@qq.com', 'receiver': '1071746790@qq.com'}}
+2025-06-27 18:05:34 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': "(-1, b'\\x00\\x00\\x00')"}
+2025-06-27 18:05:34 | INFO | {'event': 'feedback_error', 'ip': '127.0.0.1', 'error': ''}
+2025-06-27 18:08:44 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 18:08:47 | INFO | {'event': 'smtp_config', 'ip': '127.0.0.1', 'config': {'server': 'smtp.qq.com', 'port': '465', 'username': '1071746790@qq.com', 'receiver': '1071746790@qq.com'}}
+2025-06-27 18:08:53 | INFO | {'event': 'email_sent_success', 'ip': '127.0.0.1'}
+2025-06-27 18:08:53 | INFO | {'event': 'feedback_submitted', 'ip': '127.0.0.1', 'message_length': 1}
+2025-06-27 18:08:57 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 18:09:46 | INFO | {'event': 'smtp_config', 'ip': '127.0.0.1', 'config': {'server': 'smtp.qq.com', 'port': '465', 'username': '1071746790@qq.com', 'receiver': '1071746790@qq.com'}}
+2025-06-27 18:09:52 | INFO | {'event': 'email_sent_success', 'ip': '127.0.0.1'}
+2025-06-27 18:09:52 | INFO | {'event': 'feedback_submitted', 'ip': '127.0.0.1', 'message_length': 2}
+2025-06-27 18:09:56 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 18:11:44 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
+2025-06-27 18:12:01 | INFO | {'event': 'smtp_config', 'ip': '127.0.0.1', 'config': {'server': 'smtp.qq.com', 'port': '465', 'username': '1071746790@qq.com', 'receiver': '1071746790@qq.com'}}
+2025-06-27 18:12:07 | INFO | {'event': 'email_sent_success', 'ip': '127.0.0.1'}
+2025-06-27 18:12:07 | INFO | {'event': 'feedback_submitted', 'ip': '127.0.0.1', 'message_length': 4}
+2025-06-27 18:14:49 | INFO | {'event': 'page_visit', 'ip': '127.0.0.1', 'page': '/'}
